@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Oszillator
+comment1.params=
+comment1.target=Oszillator()
+comment10.params=z
+comment10.target=void\ setZeit(double)
+comment11.params=
+comment11.target=double\ getZeit()
+comment2.params=
+comment2.target=void\ starte()
+comment3.params=
+comment3.target=void\ printListe()
+comment4.params=
+comment4.target=void\ loescheListe()
+comment5.params=
+comment5.target=java.util.List\ getListe()
+comment6.params=f
+comment6.target=void\ setFrequenz(double)
+comment7.params=
+comment7.target=double\ getFrequenz()
+comment8.params=a
+comment8.target=void\ setAmplitude(double)
+comment9.params=
+comment9.target=double\ getAmplitude()
+numComments=12
