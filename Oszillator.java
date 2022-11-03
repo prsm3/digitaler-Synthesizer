@@ -9,24 +9,35 @@ public class Oszillator
     double amplitude;
     double zeit;
     List ergebnisListe;
+    String modus; //valide Modi: dreieck; sinus
 
     public Oszillator()
     {
+        //Initialisierung eines Oszillatormoduls
         ergebnisListe = new ArrayList();
     }
 
     public void starte()
     {
-        //Standard Oszillator
-        //100 Ergebnisse pro Zeiteinheit
-        for(double i=0; i < zeit; i=i+0.001)
+        if(modus == "sinus")
         {
-            ergebnisListe.add(amplitude*Math.sin(2*pi*frequenz*i));
+            for(double i=0; i < zeit; i=i+0.1)
+            {
+                ergebnisListe.add(amplitude*Math.sin(2*pi*frequenz*i));
+            }
+        }
+        if(modus == "dreieck")
+        {
+            for(double i=0; i < zeit; i=i+0.1)
+            {
+                ergebnisListe.add(2*amplitude/pi*Math.asin(Math.sin(2*pi*i*frequenz)));
+            }
         }
     }
 
     public void printListe()
     {
+        //schreibt die Liste auf
         for(int i=0; i < ergebnisListe.size(); i++)
         {
             System.out.println(ergebnisListe.get(i));
@@ -35,6 +46,7 @@ public class Oszillator
 
     public void loescheListe()
     {
+        //Löscht die Liste
         ergebnisListe.clear();
     }
 
@@ -46,7 +58,7 @@ public class Oszillator
     
     public void setFrequenz(double f)
     {
-        //langweilige Frequenzsetzung
+        //Frequenzsetzung
         frequenz = f;
     }
     
@@ -58,25 +70,31 @@ public class Oszillator
     
     public void setAmplitude(double a)
     {
-        //langweilige Amplitudensetzung
+        //Amplitudensetzung
         amplitude = a;
     }
     
     public double getAmplitude()
     {
-        //gibt Frequenz aus
+        //gibt Amplitude aus
         return amplitude;
     }
     
     public void setZeit(double z)
     {
-        //langweilige Zeitsetzung
+        //Zeitsetzung
         zeit = z;
     }
     
     public double getZeit()
     {
-        //gibt Frequenz aus
+        //gibt Zeit aus
         return zeit;
+    }
+    
+    public void setModus(String m)
+    {
+        //setzt den Modus
+        modus = m;
     }
 }
