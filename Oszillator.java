@@ -1,6 +1,5 @@
 import java.lang.Math;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Oszillator
 {
@@ -19,19 +18,26 @@ public class Oszillator
 
     public void starte()
     {
+        //generiert Sinsuwelle
         if(modus == "sinus")
         {
-            for(double i=0; i < zeit; i=i+0.1)
+            for(double i=0; i < zeit; i=i+0.01)
             {
                 ergebnisListe.add(amplitude*Math.sin(2*pi*frequenz*i));
             }
         }
-        if(modus == "dreieck")
+        //generiert Dreieckswelle
+        else if(modus == "dreieck")
         {
-            for(double i=0; i < zeit; i=i+0.1)
+            for(double i=0; i < zeit; i=i+0.01)
             {
                 ergebnisListe.add(2*amplitude/pi*Math.asin(Math.sin(2*pi*i*frequenz)));
             }
+        }
+        //Fehlercatching
+        else
+        {
+            System.out.println("invalider Modus");
         }
     }
 
