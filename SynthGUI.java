@@ -15,10 +15,21 @@ public class SynthGUI
 
     JButton test;
     Oszilloskop oszkop1;
+    Oszilloskop oszkop2;
+    Oszilloskop oszkop3;
+    OszillatorPanel oszPanel1;
+    OszillatorPanel oszPanel2;
     
     public SynthGUI()
     {
-        fenster= new JFrame();
+        JPanel mainPanel = new JPanel();
+        GridBagLayout gbl = new GridBagLayout();
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(3,3,3,3);
+        gbl.setConstraints(mainPanel, gbc);
+        mainPanel.setLayout(gbl);
+        
+        fenster = new JFrame();
         
         oben = new JPanel();
         unten = new JPanel();
@@ -28,26 +39,30 @@ public class SynthGUI
         linksUnten = new JPanel();
         rechtsUnten = new JPanel();
         
-        //test = new JButton("test");
-        //test.setFont(new Font("Arial", Font.PLAIN, 20));
+        // test = new JButton("test");
+        // test.setFont(new Font("Arial", Font.PLAIN, 20));
         
         oszkop1 = new Oszilloskop();
+        oszkop2 = new Oszilloskop();
+        oszkop3 = new Oszilloskop();
+        oszPanel1 = new OszillatorPanel();
+        oszPanel2 = new OszillatorPanel();
         
-        rechtsUnten.add(oszkop1);
-        //linksOben.add(new JButton("LO"));
-        //rechtsOben.add(new JButton("RO"));
-        //linksUnten.add(new JButton("LU"));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        mainPanel.add(oszPanel1, gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        mainPanel.add(oszPanel2, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        mainPanel.add(oszkop1, gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        mainPanel.add(oszkop2, gbc);
         
-        oben.add(linksOben, BorderLayout.WEST);
-        oben.add(rechtsOben, BorderLayout.EAST);
-        
-        unten.add(linksUnten, BorderLayout.WEST);
-        unten.add(rechtsUnten, BorderLayout.EAST);
-        
-        fenster.add(oben, BorderLayout.NORTH);
-        fenster.add(unten, BorderLayout.SOUTH);
-        
-        fenster.setSize(600,600);
+        fenster.add(mainPanel);
+        fenster.setSize(700,700);
         fenster.setVisible(true);
     }
 }
