@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.JCheckBox;
 import java.awt.event.*;
+import java.util.*;
 
 public class OszillatorPanel extends JPanel
 {
@@ -24,33 +25,23 @@ public class OszillatorPanel extends JPanel
     JTextField frequenzFeld;
     JTextField ampluitudeFeld;
     JTextField zeitFeld;
+    Choice wellentyp;
+    
+    JButton startButton;
     
     public OszillatorPanel()
     {
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10,10,10,10);
+        gbc.insets = new Insets(2,2,2,2);
         gbl.setConstraints(this, gbc);
         setLayout(gbl);
         
-        JCheckBox dreieckBox = new JCheckBox("dreieck", true);
-        JCheckBox sinusBox = new JCheckBox("sinus", false);
-        
-        dreieckBox.addItemListener(new ItemListener()
-        {
-            public void itemStateChanged(ItemEvent e)
-            {
-                sinusBox.setSelected(false);
-            }
-        });
-        
-        sinusBox.addItemListener(new ItemListener()
-        {
-            public void itemStateChanged(ItemEvent e)
-            {
-                dreieckBox.setSelected(false);
-            }
-        });
+        // JCheckBox dreieckBox = new JCheckBox("dreieck", true);
+        // JCheckBox sinusBox = new JCheckBox("sinus", false);
+        wellentyp = new Choice();
+        wellentyp.add("sinus");
+        wellentyp.add("dreieck");
         
         core = new Oszillator();
         
@@ -81,6 +72,15 @@ public class OszillatorPanel extends JPanel
         zeitLabel = new JLabel("Zeit:");
         zeitLabel.setFont(new Font("Arial", Font.PLAIN, 12));
         
+        startButton = new JButton("START");
+        startButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                starte();
+            }
+        });
+        
         gbc.gridx = 1;
         gbc.gridy = 0;
         add(ueberLabel, gbc);
@@ -95,10 +95,10 @@ public class OszillatorPanel extends JPanel
         add(typLabel, gbc);
         gbc.gridx = 1;
         gbc.gridy = 2;
-        add(dreieckBox, gbc);
+        add(wellentyp, gbc);
         gbc.gridx = 2;
         gbc.gridy = 2;
-        add(sinusBox, gbc);
+        add(startButton, gbc);
         gbc.gridx = 0;
         gbc.gridy = 3;
         add(amplitudeLabel, gbc);
@@ -113,5 +113,14 @@ public class OszillatorPanel extends JPanel
         add(zeitFeld, gbc);
     }
     
-    
+    public java.util.List starte()
+    {
+        core.setAmplitude(Double.valueOf(ampluitudeFeld.getText()));
+        core.setZeit(Double.valueOf(zeitFeld.getText()));
+        core.setFrequenz(Double.valueOf(frequenzFeld.getText()));
+        core.setModus(wellentyp.getSelectedItem());
+        core.starte();
+        core.printListe();
+        return core.getListe();
+    }
 }
