@@ -124,6 +124,10 @@ public class OszillatorPanel extends JPanel
     
     public java.util.List starte()
     {
+        if(core.getListe().size()>0)
+        {
+            core.loescheListe();
+        }
         core.setAmplitude(Double.valueOf(ampluitudeFeld.getText()));
         core.setZeit(Double.valueOf(zeitFeld.getText()));
         core.setFrequenz(Double.valueOf(frequenzFeld.getText()));

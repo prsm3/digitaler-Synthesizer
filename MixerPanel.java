@@ -21,7 +21,7 @@ public class MixerPanel extends JPanel
         mixer = new Mixer();
         
         liste1 = new ArrayList();
-        liste1 = new ArrayList();
+        liste2 = new ArrayList();
         
         Border aussenlinie = BorderFactory.createLineBorder(Color.black);
         setBorder(aussenlinie);
@@ -70,10 +70,18 @@ public class MixerPanel extends JPanel
     {
         if(i==1)
         {
+            if(liste1.size()>0)
+            {
+                liste1.clear();
+            }
             liste1 = liste;
         }
         if(i==2)
         {
+            if(liste2.size()>0)
+            {
+                liste2.clear();
+            }
             liste2 = liste;
         }
     }
