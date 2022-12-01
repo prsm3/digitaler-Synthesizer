@@ -21,7 +21,7 @@ public class Oszillator
         //generiert Sinsuwelle
         if(modus == "sinus")
         {
-            for(double i=0; i < zeit; i=i+0.01)
+            for(double i=0; i < zeit; i=i+0.1)
             {
                 ergebnisListe.add(amplitude*Math.sin(2*pi*frequenz*i));
             }
@@ -29,7 +29,7 @@ public class Oszillator
         //generiert Dreieckswelle
         else if(modus == "dreieck")
         {
-            for(double i=0; i < zeit; i=i+0.01)
+            for(double i=0; i < zeit; i=i+0.1)
             {
                 ergebnisListe.add(2*amplitude/pi*Math.asin(Math.sin(2*pi*i*frequenz)));
             }

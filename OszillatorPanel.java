@@ -3,18 +3,19 @@ import javax.swing.*;
 import javax.swing.JCheckBox;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.border.Border;
 
 public class OszillatorPanel extends JPanel
 {
     Oszillator core;
     
-    JPanel oben;
-    JPanel mitte;
-    JPanel unten;
+    // JPanel oben;
+    // JPanel mitte;
+    // JPanel unten;
     
-    JPanel untenLinks;
-    JPanel untenMitte;
-    JPanel untenRechts;
+    // JPanel untenLinks;
+    // JPanel untenMitte;
+    // JPanel untenRechts;
     
     JLabel ueberLabel;
     JLabel typLabel;
@@ -37,6 +38,9 @@ public class OszillatorPanel extends JPanel
         gbl.setConstraints(this, gbc);
         setLayout(gbl);
         
+        Border aussenlinie = BorderFactory.createLineBorder(Color.black);
+        setBorder(aussenlinie);
+        
         // JCheckBox dreieckBox = new JCheckBox("dreieck", true);
         // JCheckBox sinusBox = new JCheckBox("sinus", false);
         wellentyp = new Choice();
@@ -49,13 +53,13 @@ public class OszillatorPanel extends JPanel
         ampluitudeFeld = new JTextField("Amplitude");
         zeitFeld = new JTextField("Länge der Wellenform");
         
-        oben = new JPanel();
-        mitte = new JPanel();
-        unten = new JPanel();
+        // oben = new JPanel();
+        // mitte = new JPanel();
+        // unten = new JPanel();
         
-        untenLinks = new JPanel();
-        untenMitte = new JPanel();
-        untenRechts = new JPanel();
+        // untenLinks = new JPanel();
+        // untenMitte = new JPanel();
+        // untenRechts = new JPanel();
         
         ueberLabel = new JLabel("Oszillator");
         ueberLabel.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -111,6 +115,11 @@ public class OszillatorPanel extends JPanel
         gbc.gridx = 1;
         gbc.gridy = 4;
         add(zeitFeld, gbc);
+    }
+    
+    public java.util.List getListe()
+    {
+        return core.getListe();
     }
     
     public java.util.List starte()
