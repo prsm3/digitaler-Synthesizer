@@ -18,16 +18,26 @@ public class Mixer
             //Größenvergleich
             if(l1.size()>l2.size())
             {
-                for(int i = 0; i<l1.size(); i++)
+                for(int i=0; i<l2.size(); i++)
                 {
                     ergebnisListe.add((Double)l1.get(i)+(Double)l2.get(i));
+                }
+                //falls eine Liste größer ist wird hier der Rest dieser Liste angefügt
+                for(int i=ergebnisListe.size(); i<l1.size(); i++)
+                {
+                    ergebnisListe.add((Double)l1.get(i));
                 }
             }
             else
             {
-                for(int i = 0; i<l2.size(); i++)
+                for(int i = 0; i<l1.size(); i++)
                 {
                     ergebnisListe.add((Double)l1.get(i)+(Double)l2.get(i));
+                }
+                //falls eine Liste größer ist wird hier der Rest dieser Liste angefügt
+                for(int i=ergebnisListe.size(); i<l2.size(); i++)
+                {
+                    ergebnisListe.add((Double)l2.get(i));
                 }
             }
         }
@@ -37,7 +47,7 @@ public class Mixer
             //Größenvergleich
             if(l1.size()>l2.size())
             {
-                for(int i=0; i < l1.size(); i++)
+                for(int i=0; i < l2.size(); i++)
                 {
                     //Sichergehen das die Vorzeichen richtig sind
                     if(Math.abs((Double)l1.get(i))>Math.abs((Double)l2.get(i)))
@@ -51,10 +61,15 @@ public class Mixer
                         ergebnisListe.add((Double)l2.get(i)-(Double)l1.get(i));
                     }
                 }
+                //falls eine Liste größer ist wird hier der Rest dieser Liste angefügt
+                for(int i=ergebnisListe.size(); i<l1.size(); i++)
+                {
+                    ergebnisListe.add((Double)l1.get(i));
+                }
             }
             else
             {
-                for(int i = 0; i<l2.size(); i++)
+                for(int i = 0; i<l1.size(); i++)
                 {
                     //Sichergehen das die Vorzeichen richtig sind
                     if(Math.abs((Double)l1.get(i))>Math.abs((Double)l2.get(i))){
@@ -66,6 +81,11 @@ public class Mixer
                         //ausrechnen des Wertes zum Zeitpunkt i
                         ergebnisListe.add((Double)l2.get(i)-(Double)l1.get(i));
                     }
+                }
+                //falls eine Liste größer ist wird hier der Rest dieser Liste angefügt
+                for(int i=ergebnisListe.size(); i<l2.size(); i++)
+                {
+                    ergebnisListe.add((Double)l2.get(i));
                 }
             }
         }
